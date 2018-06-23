@@ -4,15 +4,15 @@ import React, { Component } from 'react'
 
 import './css/style.css'
 
-const App extnds Component {
+class App extends Component {
 
   construtor() {
     super()
-    this.state = { value: ''}
+    this.state = { value: '' }
 
     this.handleSubmit = (e) => {
       e.preventDefault()
-      console.log(e.target.textarea.value)
+
       this.setState({
         value: e.target.textarea.value
       })
@@ -21,20 +21,20 @@ const App extnds Component {
   }
 
 
-  render(){
-return (
+  render() {
+    return (
 
-<div className='editor'>
-  <form onSubmit={handleSubmit}>
-  <textarea name='textarea' />
-  <button>Renderizar markup</button>
-  </form>
-  <div className="view" >
-    {this.state.value}
-  </div>
-</div>
+      <div className='editor'>
+        <form onSubmit={this.handleSubmit}>
+          <textarea name='textarea' />
+          <button>Renderizar markup</button>
+        </form>
+        <div className="view" >
+          {this.state.value}
+        </div>
+      </div>
 
-)
+    )
   }
 
 }
