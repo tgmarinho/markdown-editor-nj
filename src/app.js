@@ -2,11 +2,13 @@
 
 import React, { Component } from 'react'
 import MarkdownEditor from './components/markdown-editor'
+import marked from 'marked'
+import 'normalize.css'
 import './css/style.css'
 
 class App extends Component {
 
-  construtor() {
+  constructor() {
     super()
     this.state = { value: '' }
 
@@ -16,6 +18,10 @@ class App extends Component {
       })
     }
 
+    this.getMarkup = () => {
+      return { __html: marked(this.state.value) }
+    }
+
   }
 
 
@@ -23,7 +29,9 @@ class App extends Component {
     return (
       <MarkdownEditor
         value={this.state.value}
-        handleChange={this.handleChange} />
+        handleChange={this.handleChange}
+        getMarkup={this.getMarkup}/>
+
     )
   }
 
