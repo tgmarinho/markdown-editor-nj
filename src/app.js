@@ -1,42 +1,42 @@
 'use strict'
 
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 
 import './css/style.css'
 
-class App extends PureComponent {
-  constructor () {
+const App extnds Component {
+
+  construtor() {
     super()
-    this.state = {
-      title: '...',
-      Component: 'div'
+    this.state = { value: ''}
+
+    this.handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(e.target.textarea.value)
+      this.setState({
+        value: e.target.textarea.value
+      })
     }
+
   }
 
-  getTitle () {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('My app with async / await!')
-      }, 2000)
-    })
+
+  render(){
+return (
+
+<div className='editor'>
+  <form onSubmit={handleSubmit}>
+  <textarea name='textarea' />
+  <button>Renderizar markup</button>
+  </form>
+  <div className="view" >
+    {this.state.value}
+  </div>
+</div>
+
+)
   }
 
-  async componentDidMount () {
-    const title = await import('components/title')
-
-    this.setState({
-      title: await this.getTitle(),
-      Component: title.default
-    })
-  }
-
-  render () {
-    return (
-      <div>
-        <this.state.Component>{this.state.title}</this.state.Component>
-      </div>
-    )
-  }
 }
 
 export default App
